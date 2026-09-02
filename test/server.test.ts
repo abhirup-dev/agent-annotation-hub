@@ -47,6 +47,9 @@ describe("HTTP server", () => {
       expect(html).toContain('id=\"table-view\"');
       expect(html).toContain('List (classic)');
       expect(html).toContain('Review kind');
+      expect(html).toContain('data-key="subject">Review</th>');
+      expect(html).toContain('function reviewSubject(s)');
+      expect(html).toContain('function reviewContext(s)');
       expect(html).toContain('addEventListener("dblclick"');
       expect(html).toContain("Close session?");
       expect(html).toContain("x-annotation-hub-action");
