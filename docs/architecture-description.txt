@@ -1,0 +1,130 @@
+## Canvas Description
+Total elements: 70
+Types: text(27), rectangle(18), arrow(19), ellipse(6)
+Bounding box: (50, 20) to (1520, 1240) = 1470x1220
+
+### Elements (top-to-bottom, left-to-right):
+  [title] text | at (70, 20) | size 867x35 | text: "Agent Annotation Hub — Local Architecture & Session Lifecycle" | stroke: #1e293b
+  [spawn-zone] rectangle | at (50, 90) | size 1050x170 | bg: #f8fafc | stroke: #94a3b8
+  [lifecycle] text | at (1150, 95) | size 188x30 | text: "Session lifecycle" | stroke: #1e293b
+  [spawn-label] text | at (70, 105) | size 269x25 | text: "1 · Sessions start anywhere" | stroke: #475569
+  [crit] rectangle | at (90, 155) | size 220x70 | bg: #ede9fe | stroke: #6d28d9
+  [8qshfRRsqYEXWo1mFQdGe] text | at (96, 165) | size 208x50 | text: "Crit daemon
+random loopback port" | stroke: #6d28d9
+  [a-agent-crit] arrow | at (318, 190) | size 103x0 | stroke: #475569
+  [a-agent-plan] arrow | at (318, 190) | size 473x1 | stroke: #475569
+  [agents] rectangle | at (440, 155) | size 220x70 | bg: #e0f2fe | stroke: #0369a1
+  [t-lnBoka0WS2uHytfO06D] text | at (452, 165) | size 196x50 | text: "Terminal / AI Agent
+Pi · Claude · Codex" | stroke: #0369a1
+  [plan] rectangle | at (800, 155) | size 240x70 | bg: #fce7f3 | stroke: #be185d
+  [uGnEjm7UN5Vw_KcSvhaeP] text | at (816, 165) | size 208x50 | text: "Plannotator server
+random loopback port" | stroke: #be185d
+  [life1] ellipse | at (1190, 170) | size 290x85 | bg: #e0f2fe | stroke: #0369a1
+  [pg1QkTr0EqaV307y8OYZK] text | at (1262, 188) | size 147x50 | text: "Tool starts on
+random port" | stroke: #0369a1
+  [a-crit-reg] arrow | at (502, 231) | size 126x137 | stroke: #6d28d9
+  [a-plan-reg] arrow | at (895, 232) | size 82x135 | stroke: #be185d
+  [a-life12] arrow | at (1335, 248) | size 0x58 | stroke: #475569
+  [state-zone] rectangle | at (50, 300) | size 1050x190 | bg: #fffbeb | stroke: #d97706
+  [state-label] text | at (70, 315) | size 436x25 | text: "2 · Tool-owned session registries (read-only)" | stroke: #92400e
+  [life2] ellipse | at (1190, 315) | size 290x85 | bg: #fef3c7 | stroke: #b45309
+  [TjDfz1lJ6XfkL0efWKshW] text | at (1264, 333) | size 141x50 | text: "Registry entry
+appears" | stroke: #b45309
+  [crit-reg] rectangle | at (180, 375) | size 310x85 | bg: #fef3c7 | stroke: #b45309
+  [YBUco70uMz7XrvV6LMqdf] text | at (201, 380) | size 268x75 | text: "~/.crit/sessions/<key>.json
+PID · port · cwd · branch ·
+args" | stroke: #b45309
+  [plan-reg] rectangle | at (620, 375) | size 330x85 | bg: #fef3c7 | stroke: #b45309
+  [yaJDOazePE3GxbKx2XyFt] text | at (625, 380) | size 320x75 | text: "~/.plannotator/sessions/
+<pid>.json
+PID · port · URL · mode · project" | stroke: #b45309
+  [a-life23] arrow | at (1335, 393) | size 0x58 | stroke: #475569
+  [a-reg-discover1] arrow | at (312, 457) | size 78x155 | stroke: #b45309
+  [a-reg-discover2] arrow | at (690, 453) | size 383x163 | stroke: #b45309
+  [life3] ellipse | at (1190, 460) | size 290x85 | bg: #d1fae5 | stroke: #047857
+  [vD72Mgxle1vYkgvcpLWe_] text | at (1261, 478) | size 148x50 | text: "Hub validates +
+lists card" | stroke: #047857
+  [hub-zone] rectangle | at (50, 530) | size 1050x330 | bg: #ecfdf5 | stroke: #059669
+  [hub-label] text | at (70, 545) | size 538x25 | text: "3 · Always-on Bun observer · 127.0.0.1:7632 · every ~2s" | stroke: #047857
+  [a-life34] arrow | at (1335, 538) | size 0x58 | stroke: #475569
+  [discover] rectangle | at (100, 620) | size 220x85 | bg: #d1fae5 | stroke: #047857
+  [OG8YBF_3gy6dHwHyS8srA] text | at (129, 625) | size 162x75 | text: "Registry readers
+tolerant JSON
+parsing" | stroke: #047857
+  [validate] rectangle | at (440, 620) | size 230x85 | bg: #d1fae5 | stroke: #047857
+  [1L-jtclm6kfMTceOqhJHu] text | at (458, 625) | size 193x75 | text: "Safety validation
+PID alive · loopback
+URL" | stroke: #047857
+  [enrich] rectangle | at (790, 620) | size 240x75 | bg: #d1fae5 | stroke: #047857
+  [GaXZvE3i_ltus3MWpOASY] text | at (801, 633) | size 217x50 | text: "Metadata enrichment
+lsof · git · ps heuristic" | stroke: #047857
+  [life4] ellipse | at (1190, 605) | size 290x85 | bg: #dbeafe | stroke: #1d4ed8
+  [nUE8S8M9ESq1akvjKP4FT] text | at (1249, 623) | size 172x50 | text: "Click opens review
+in new tab" | stroke: #1d4ed8
+  [a-discover-validate] arrow | at (328, 658) | size 103x0 | stroke: #047857
+  [a-validate-enrich] arrow | at (678, 658) | size 103x0 | stroke: #047857
+  [a-life45] arrow | at (1335, 683) | size 0x58 | stroke: #475569
+  [a-validate-health] arrow | at (503, 700) | size 60x49 | stroke: #047857
+  [a-enrich-snapshot] arrow | at (862, 700) | size 54x48 | stroke: #047857
+  [health] rectangle | at (275, 755) | size 240x85 | bg: #a7f3d0 | stroke: #047857
+  [JrGOlW5Ka2nOCC9dwzYmm] text | at (282, 760) | size 227x75 | text: "Health probes
+short-timeout loopback
+GET" | stroke: #047857
+  [a-health-snapshot] arrow | at (523, 788) | size 108x0 | stroke: #047857
+  [snapshot] rectangle | at (640, 755) | size 250x85 | bg: #a7f3d0 | stroke: #047857
+  [r1QHoTy0FHuV4M3Hrlyh8] text | at (668, 760) | size 195x75 | text: "In-memory snapshot
+all currently live
+sessions" | stroke: #047857
+  [life5] ellipse | at (1190, 750) | size 290x85 | bg: #fce7f3 | stroke: #be185d
+  [5ajwQYTJPOjVDY2M5Wn4u] text | at (1254, 768) | size 162x50 | text: "Approve / finish;
+tool exits" | stroke: #be185d
+  [a-snapshot-api] arrow | at (680, 823) | size 367x153 | stroke: #1d4ed8
+  [a-life56] arrow | at (1335, 828) | size 0x58 | stroke: #475569
+  [life6] ellipse | at (1190, 895) | size 290x85 | bg: #fee2e2 | stroke: #b91c1c
+  [surface-zone] rectangle | at (50, 900) | size 1050x210 | bg: #eff6ff | stroke: #2563eb
+  [surface-label] text | at (70, 915) | size 458x25 | text: "4 · Stable access and dedicated review surface" | stroke: #1d4ed8
+  [OZLIrop39xJcsMtdkBUDF] text | at (1250, 913) | size 170x50 | text: "Next poll removes
+dead PID" | stroke: #b91c1c
+  [api] rectangle | at (100, 980) | size 230x85 | bg: #dbeafe | stroke: #1d4ed8
+  [O8lCnI8OF5Jb3PYBrWbRQ] text | at (115, 985) | size 200x75 | text: "Hub HTTP API + UI
+/ · /api/sessions ·
+/api/health" | stroke: #1d4ed8
+  [portless] rectangle | at (445, 980) | size 230x85 | bg: #dbeafe | stroke: #1d4ed8
+  [BXdcsLjDE59Z64dC91v-K] text | at (493, 985) | size 133x75 | text: "Portless alias
+annotation-
+hub.localhost" | stroke: #1d4ed8
+  [helium] rectangle | at (790, 980) | size 250x85 | bg: #dbeafe | stroke: #1d4ed8
+  [uD2G_UEhRys1MnOYJw3ue] text | at (812, 985) | size 206x75 | text: "Helium 0.15.7.1
+dedicated credential-
+free profile" | stroke: #1d4ed8
+  [a-api-portless] arrow | at (338, 1018) | size 98x0 | stroke: #1d4ed8
+  [a-portless-helium] arrow | at (683, 1018) | size 98x0 | stroke: #1d4ed8
+  [guard-title] text | at (1130, 1015) | size 107x28 | text: "Guardrails" | stroke: #991b1b
+  [guards] rectangle | at (1140, 1060) | size 380x180 | bg: #fef2f2 | stroke: #b91c1c
+  [BsrXt-BNm0BHakdnNZxrU] text | at (1178, 1075) | size 305x150 | text: "• No wrappers or interception
+• No review content reads
+• Reject non-loopback links
+• No process-env scraping
+• Persistent setup is reversible
+• Origin is explicitly heuristic" | stroke: #b91c1c
+
+### Connections:
+  agents --> crit (arrow: a-agent-crit)
+  agents --> plan (arrow: a-agent-plan)
+  crit --> crit-reg (arrow: a-crit-reg)
+  plan --> plan-reg (arrow: a-plan-reg)
+  crit-reg --> discover (arrow: a-reg-discover1)
+  plan-reg --> discover (arrow: a-reg-discover2)
+  discover --> validate (arrow: a-discover-validate)
+  validate --> enrich (arrow: a-validate-enrich)
+  validate --> health (arrow: a-validate-health)
+  enrich --> snapshot (arrow: a-enrich-snapshot)
+  health --> snapshot (arrow: a-health-snapshot)
+  snapshot --> api (arrow: a-snapshot-api)
+  api --> portless (arrow: a-api-portless)
+  portless --> helium (arrow: a-portless-helium)
+  life1 --> life2 (arrow: a-life12)
+  life2 --> life3 (arrow: a-life23)
+  life3 --> life4 (arrow: a-life34)
+  life4 --> life5 (arrow: a-life45)
+  life5 --> life6 (arrow: a-life56)
