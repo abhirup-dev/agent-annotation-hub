@@ -23,10 +23,31 @@ STATE_DIR="$HOME/.annotation-hub/state"
 HUB_LOG="$STATE_DIR/hub.log"
 ALIAS_NAME="annotation-hub"
 HUB_PORT="7632"
-BUN_BIN="$(command -v bun || true)"
+BUN_BIN=""
 DRY_RUN=0
 COMPONENTS=()
 SHELL_FILES=()
+
+# bun is provisioned by mise (pinned in the dotfiles repo, config/mise/config.toml).
+# Resolve it late and fail with the exact command that fixes it — a missing bun
+# otherwise surfaces as a LaunchAgent exiting 78 in a log nobody reads.
+need_bun() {
+  [[ -n "$BUN_BIN" ]] && return 0
+  BUN_BIN="$(command -v bun || true)"
+  [[ -n "$BUN_BIN" ]] && return 0
+  if command -v mise >/dev/null 2>&1; then
+    die "bun not found on PATH, but mise is installed.
+    bun is a mise-managed dependency of the hub. Install it with:
+      mise install bun            # uses the pin in ~/.config/mise/config.toml
+    or, from the dotfiles repo, the task that owns this whole component:
+      mise run setup:annotation-hub
+    If 'mise install bun' reports no version, the dotfiles pin is missing —
+    add   bun = \"<version>\"   to config/mise/config.toml and re-run."
+  fi
+  die "bun not found on PATH, and mise is not installed either.
+    This machine provisions dev tools with mise. Install mise first
+    (https://mise.jdx.dev), then:  mise install bun"
+}
 
 say()  { printf '%s\n' "$*"; }
 note() { printf '    %s\n' "$*"; }
@@ -93,7 +114,7 @@ EOF
 
 install_hub() {
   say "[hub] user LaunchAgent ($LABEL) on 127.0.0.1:$HUB_PORT"
-  [[ -n "$BUN_BIN" ]] || die "bun not found on PATH — required to run the hub."
+  need_bun
   if [[ -f "$PLIST" ]] && ! grep -q 'annotation-hub managed' "$PLIST"; then
     die "$PLIST exists and is not managed by annotation-hub — refusing to overwrite."
   fi
@@ -143,7 +164,7 @@ EOF
 
 install_crit() {
   say "[crit] global no_open (browser auto-open off) via supported config file"
-  [[ -n "$BUN_BIN" ]] || die "bun not found on PATH."
+  need_bun
   run "$BUN_BIN" run "$ROOT/scripts/crit-config.ts" set --home "$HOME" ${DRY_FLAG[@]+"${DRY_FLAG[@]}"}
   note "two-level crit config: a project .crit.config.json may re-enable opening"
   note "inside that repo; that stays under the repo owner's control."
