@@ -28,25 +28,20 @@ DRY_RUN=0
 COMPONENTS=()
 SHELL_FILES=()
 
-# bun is provisioned by mise (pinned in the dotfiles repo, config/mise/config.toml).
+# bun is provisioned by Homebrew (declared in the dotfiles repo, brew/Brewfile).
 # Resolve it late and fail with the exact command that fixes it — a missing bun
 # otherwise surfaces as a LaunchAgent exiting 78 in a log nobody reads.
 need_bun() {
   [[ -n "$BUN_BIN" ]] && return 0
   BUN_BIN="$(command -v bun || true)"
   [[ -n "$BUN_BIN" ]] && return 0
-  if command -v mise >/dev/null 2>&1; then
-    die "bun not found on PATH, but mise is installed.
-    bun is a mise-managed dependency of the hub. Install it with:
-      mise install bun            # uses the pin in ~/.config/mise/config.toml
-    or, from the dotfiles repo, the task that owns this whole component:
-      mise run setup:annotation-hub
-    If 'mise install bun' reports no version, the dotfiles pin is missing —
-    add   bun = \"<version>\"   to config/mise/config.toml and re-run."
-  fi
-  die "bun not found on PATH, and mise is not installed either.
-    This machine provisions dev tools with mise. Install mise first
-    (https://mise.jdx.dev), then:  mise install bun"
+  die "bun not found on PATH — required to run the hub.
+    bun is a Homebrew-managed dependency, declared in the dotfiles repo
+    (brew/Brewfile). Install it with:
+      brew install bun
+    or, from the dotfiles repo, the tasks that own this whole component:
+      mise run setup:apps            # installs everything in brew/Brewfile
+      mise run setup:annotation-hub  # clone + install the hub itself"
 }
 
 say()  { printf '%s\n' "$*"; }
@@ -124,6 +119,11 @@ install_hub() {
     say "  [dry-run] launchctl bootstrap gui/$(id -u) $PLIST"
     return
   fi
+  # The hub shells out to `plannotator --version` for its compatibility panel.
+  # plannotator is mise-served (ubi backend), so the shims dir must stay on the
+  # agent's PATH even though bun itself now comes from brew — otherwise the
+  # health endpoint silently reports plannotator as absent.
+  MISE_SHIMS="${MISE_DATA_DIR:-$HOME/.local/share/mise}/shims"
   cat >"$PLIST" <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- annotation-hub managed -->
@@ -142,7 +142,7 @@ install_hub() {
   <dict>
     <key>ANNOTATION_HUB_PORT</key><string>$HUB_PORT</string>
     <key>ANNOTATION_HUB_HOST</key><string>127.0.0.1</string>
-    <key>PATH</key><string>$HOME/.local/bin:$(dirname "$BUN_BIN"):/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    <key>PATH</key><string>$HOME/.local/bin:$(dirname "$BUN_BIN"):$MISE_SHIMS:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
   </dict>
   <key>RunAtLoad</key><true/>
   <key>KeepAlive</key><true/>
